@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a51f3659-494e-4c83-8dc5-2abb4e1637dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LMS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Screenshots/2023-01-22_12h26_57.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Screenshots/2023-01-22_12h29_21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Screenshots/2023-01-22_12h35_46.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Screenshots/2023-01-22_13h27_24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Screenshots/2023-01-23_18h55_38.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/FileOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/LMS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/Courses.CSV" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/Student_course_details.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/coursedata.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/output.CSV" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/student-data.txt" afterDir="false" />
+    <list default="true" id="a51f3659-494e-4c83-8dc5-2abb4e1637dc" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +81,35 @@
       <option name="presentableId" value="Default" />
       <updated>1674345665695</updated>
     </task>
+    <task id="LOCAL-00001" summary="My project">
+      <created>1674493603512</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674493603512</updated>
+    </task>
+    <task id="LOCAL-00002" summary="My project">
+      <created>1674494092729</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674494092729</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1674504347057</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674504347057</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1674504370917</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674504370918</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,5 +122,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="My project" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
