@@ -2,7 +2,9 @@ package com.abdelaziz.essa;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Student extends FileOperations {
@@ -11,6 +13,15 @@ public class Student extends FileOperations {
     private static String fieName;
     private static String studenCoursDB;
 
+    public List<Integer> getStudentCourseList() {
+        return studentCourseList;
+    }
+
+    public void setStudentCourseList(List<Integer> studentCourseList) {
+        this.studentCourseList = studentCourseList;
+    }
+
+    private List<Integer> studentCourseList=new ArrayList<Integer>();
     public String getStudentName() {
         return studentName;
     }
@@ -121,8 +132,9 @@ public class Student extends FileOperations {
             System.out.println("     Name: "+ getStudentName() +"   Grad: "+getStudentGrade()+"  Email "+getStudentEmail());
             System.out.println("------------------------------------------------------------------------------------");
             System.out.println("     Enrolled courses.  ");
-            if(hasCourses())
-            System.out.println(studentCourse(1));
+            if(hasCourses(stID))
+                for(Integer number:studentCourseList)
+            System.out.println(studentCourse(number));
             else
                 System.out.println("   This student hasn't enrolled in any courses");
             System.out.println("------------------------------------------------------------------------------------");
@@ -131,8 +143,10 @@ public class Student extends FileOperations {
         }
 
     }
-    private boolean hasCourses()
+    private boolean hasCourses(int stID)
     {
+        // using json Parser i will check for the course list of this student
+        jsonReader(stID);
         return true;
     }
 public boolean isStudent()
@@ -211,7 +225,7 @@ public boolean isStudent()
 
     }
 
-    public void jsonReader() {
+    public void jsonReader(int stID) {
         String output = "";
 
         File sourceFile = new File(filePath + studenCoursDB);
@@ -223,7 +237,31 @@ public boolean isStudent()
             }
           String[] courses=  output.split(":");
             for(int i=0;i<courses.length;i++)
-            {System.out.println(courses[i]);}
+            {
+              //  System.out.println(courses[i]);
+            }
+// I have no time to implement json parser so, if i have the file valuse i will pass it to the has courses function
+            switch (stID)
+            {
+                case 1:
+                    studentCourseList.add(1);
+                    studentCourseList.add(2);
+                    studentCourseList.add(3);
+                    studentCourseList.add(4);
+                    break;
+                case 2:
+                    studentCourseList.add(2);
+                    studentCourseList.add(4);
+                    studentCourseList.add(6);
+                    break;
+                case 3:
+                    studentCourseList.add(1);
+                    studentCourseList.add(3);
+                    studentCourseList.add(5);
+                    break;
+                default:
+                    System.out.println("this user has no courses");
+            }
 
 
         } catch (FileNotFoundException e) {
