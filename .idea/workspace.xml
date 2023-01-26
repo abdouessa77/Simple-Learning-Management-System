@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="810a85df-9a14-4376-82e1-3ab8a4e1635d" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/com/abdelaziz/essa/Student.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/LMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/LMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/Courses.CSV" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/Courses.CSV" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/coursedata.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/coursedata.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/output.CSV" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/output.CSV" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +81,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a51f3659-494e-4c83-8dc5-2abb4e1637dc" name="Changes" comment="" />
+      <changelist id="810a85df-9a14-4376-82e1-3ab8a4e1635d" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/com/abdelaziz/essa/Student.java" />
       <created>1674345665695</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

@@ -1,8 +1,11 @@
 package com.abdelaziz.essa;
 
+import java.io.File;
+
 public class LMS extends FileOperations {
 
-   final public static String filesPath= "D:\\Workspaces\\Training\\Java\\LMS\\src\\com\\abdelaziz\\essa\\res\\";
+  // final public static String filesPath= "D:\\Workspaces\\Training\\Java\\LMS\\src\\com\\abdelaziz\\essa\\res\\";
+    final public static String filesPath= new File("").getAbsolutePath().concat("\\src\\com\\abdelaziz\\essa\\res\\");
     public static void main(String[] st){
         LMS lm= new LMS();
 
