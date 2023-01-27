@@ -1,12 +1,16 @@
 package com.abdelaziz.essa;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Student extends FileOperations {
     private int stID;
@@ -229,17 +233,70 @@ public boolean isStudent()
     public void jsonReader(int stID) {
         String output = "";
 
+        Scanner scr = null;
+        try {
+            File sourceFile = new File(filePath + studenCoursDB);
+            //==================== //
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader(sourceFile));
+            JSONObject jsonObject = (JSONObject) obj;
+            //jsonObject.get("");
+            Iterator<String> keys = jsonObject.keySet().iterator();
+
+            while(keys.hasNext()) {
+                String key = keys.next();
+                if (Integer.parseInt(key)==stID) {
+                    // do something with jsonObject here
+                    System.out.println("This student has courses: ");
+                    System.out.println(jsonObject.get(key));
+                }
+
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+
+
+    }
+
+    public void jsonReader_old(int stID) throws IOException, ParseException {
+        String output = "";
+
         File sourceFile = new File(filePath + studenCoursDB);
+        //==================== //
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(new FileReader(sourceFile));
+        //  JSONArray jsonArray = new JSONArray(obj);
+      /*  for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            System.out.println(jsonObject.get("name"));
+            System.out.println(jsonObject.get("city"));
+            System.out.println(jsonObject.get("job"));
+            jsonObject.getJSONArray("cars").forEach(System.out::println);
+        }
+        */
+
+
+        //---------------------------//
         Scanner scr = null;
         try {
             scr = new Scanner(sourceFile);
             while (scr.hasNext()) {
                 output += scr.nextLine();
             }
-          String[] courses=  output.split(":");
+            String[] courses=  output.split(":");
             for(int i=0;i<courses.length;i++)
             {
-              //  System.out.println(courses[i]);
+                //  System.out.println(courses[i]);
             }
 // I have no time to implement json parser so, if i have the file valuse i will pass it to the has courses function
             switch (stID)
