@@ -26,7 +26,8 @@ public class Student extends FileOperations {
         this.studentCourseList = studentCourseList;
     }
 
-    private List<Integer> studentCourseList=new ArrayList<Integer>();
+    private List<Integer> studentCourseList = new ArrayList<Integer>();
+
     public String getStudentName() {
         return studentName;
     }
@@ -51,7 +52,7 @@ public class Student extends FileOperations {
         this.studentEmail = studentEmail;
     }
 
-    private String studentName,studentGrade,studentEmail;
+    private String studentName, studentGrade, studentEmail;
     private String courseID;
     private String courseName;
     private String courseInstructor;
@@ -111,7 +112,7 @@ public class Student extends FileOperations {
     public Student(String filePath, String fieName, String studenCoursDB) {
         this.filePath = filePath;
         this.fieName = fieName;
-        this.studenCoursDB=studenCoursDB;
+        this.studenCoursDB = studenCoursDB;
 
     }
 
@@ -126,20 +127,19 @@ public class Student extends FileOperations {
         this.stID = stID;
 
     }
-    public void printStudentData(int studentId)
-    {
+
+    public void printStudentData(int studentId) {
         setStID(studentId);
-        if(isStudent())
-        {
+        if (isStudent()) {
             System.out.println("====================================================================================");
             System.out.println("     Student Details page  ");
             System.out.println("====================================================================================");
-            System.out.println("     Name: "+ getStudentName() +"   Grad: "+getStudentGrade()+"  Email "+getStudentEmail());
+            System.out.println("     Name: " + getStudentName() + "   Grad: " + getStudentGrade() + "  Email " + getStudentEmail());
             System.out.println("------------------------------------------------------------------------------------");
             System.out.println("     Enrolled courses.  ");
-            if(hasCourses(stID))
-                for(Integer number:studentCourseList)
-            System.out.println(studentCourse(number));
+            if (hasCourses(stID))
+                for (Integer number : studentCourseList)
+                    System.out.println(studentCourse(number));
             else
                 System.out.println("   This student hasn't enrolled in any courses");
             System.out.println("------------------------------------------------------------------------------------");
@@ -148,74 +148,33 @@ public class Student extends FileOperations {
         }
 
     }
-    private boolean hasCourses(int stID)
-    {
+
+    private boolean hasCourses(int stID) {
         // using json Parser i will check for the course list of this student
         jsonReader(stID);
         return true;
     }
-public boolean isStudent()
-{
-  //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
-    File sourceFile= new File(filePath+fieName);
-    try {
-        Scanner scr=new Scanner(sourceFile);
-        int i =0;
-        while (scr.hasNext()) {
 
-            String[] data = scr.nextLine().split("\n");
-            String[] row=data[0].split(",");
-
-          //  for (int k = 0; k < row.length; k++) {
-                if(i>0) // Scape header row
-                if(Integer.parseInt(row[0])==getStID())
-                {
-                   setStudentName(row[1]);
-                   setStudentGrade(row[2]);
-                   setStudentEmail(row[3]);
-
-                    scr.close();
-                    return true;
-                }
-
-            //}
-            i++;
-        }
-    } catch (FileNotFoundException e) {
-        throw new RuntimeException(e);
-    }
-//stDb.split("\n")
-
-    System.out.println("The Entered number is not valid Student ID");
-    return false;
-
-}
-
-    public String studentCourse(int courseID)
-    {
+    public boolean isStudent() {
         //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
-        File sourceFile= new File(filePath+"Courses.CSV");
+        File sourceFile = new File(filePath + fieName);
         try {
-            Scanner scr=new Scanner(sourceFile);
-            int i =0;
+            Scanner scr = new Scanner(sourceFile);
+            int i = 0;
             while (scr.hasNext()) {
 
                 String[] data = scr.nextLine().split("\n");
-                String[] row=data[0].split(",");
+                String[] row = data[0].split(",");
 
                 //  for (int k = 0; k < row.length; k++) {
-                if(i>0) // Scape header row
-                    if(Integer.parseInt(row[0])==courseID)
-                    {
-                     /*   setCourseID(row[0]);
-                        setCourseName(row[1]);
-                        setCourseInstructor(row[2]+row[3]);
-                        setCourseDuration(row[4]);
-                        setCourseTime(row[5]);
-                        setCourseLocation(row[6]);*/
+                if (i > 0) // Scape header row
+                    if (Integer.parseInt(row[0]) == getStID()) {
+                        setStudentName(row[1]);
+                        setStudentGrade(row[2]);
+                        setStudentEmail(row[3]);
 
                         scr.close();
-                        return row[0]+",      "+row[1]+",    "+row[2]+row[3]+",    "+row[4]+",     "+row[5]+",      "+row[6];
+                        return true;
                     }
 
                 //}
@@ -226,7 +185,45 @@ public boolean isStudent()
         }
 //stDb.split("\n")
 
-        return  "The Entered number is not valid Course ID";
+        System.out.println("The Entered number is not valid Student ID");
+        return false;
+
+    }
+
+    public String studentCourse(int courseID) {
+        //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
+        File sourceFile = new File(filePath + "Courses.CSV");
+        try {
+            Scanner scr = new Scanner(sourceFile);
+            int i = 0;
+            while (scr.hasNext()) {
+
+                String[] data = scr.nextLine().split("\n");
+                String[] row = data[0].split(",");
+
+                //  for (int k = 0; k < row.length; k++) {
+                if (i > 0) // Scape header row
+                    if (Integer.parseInt(row[0]) == courseID) {
+                     /*   setCourseID(row[0]);
+                        setCourseName(row[1]);
+                        setCourseInstructor(row[2]+row[3]);
+                        setCourseDuration(row[4]);
+                        setCourseTime(row[5]);
+                        setCourseLocation(row[6]);*/
+
+                        scr.close();
+                        return row[0] + ",      " + row[1] + ",    " + row[2] + row[3] + ",    " + row[4] + ",     " + row[5] + ",      " + row[6];
+                    }
+
+                //}
+                i++;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+//stDb.split("\n")
+
+        return "The Entered number is not valid Course ID";
 
     }
 
@@ -243,12 +240,18 @@ public boolean isStudent()
             //jsonObject.get("");
             Iterator<String> keys = jsonObject.keySet().iterator();
 
-            while(keys.hasNext()) {
+            while (keys.hasNext()) {
                 String key = keys.next();
-                if (Integer.parseInt(key)==stID) {
+                if (Integer.parseInt(key) == stID) {
                     // do something with jsonObject here
-                    System.out.println("This student has courses: ");
-                    System.out.println(jsonObject.get(key));
+
+                    if (jsonObject.get(key) instanceof JSONArray) {
+                        JSONArray arr = (JSONArray) jsonObject.get(key);
+                        for (int i = 0; i < arr.size(); i++) {
+                            studentCourseList.add(Integer.parseInt(arr.get(i).toString()));
+                        }
+                    }
+
                 }
 
             }
@@ -258,77 +261,12 @@ public boolean isStudent()
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
-
-        }
-
-
-    }
-
-    public void jsonReader_old(int stID) throws IOException, ParseException {
-        String output = "";
-
-        File sourceFile = new File(filePath + studenCoursDB);
-        //==================== //
-        JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader(sourceFile));
-        //  JSONArray jsonArray = new JSONArray(obj);
-      /*  for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            System.out.println(jsonObject.get("name"));
-            System.out.println(jsonObject.get("city"));
-            System.out.println(jsonObject.get("job"));
-            jsonObject.getJSONArray("cars").forEach(System.out::println);
-        }
-        */
-
-
-        //---------------------------//
-        Scanner scr = null;
-        try {
-            scr = new Scanner(sourceFile);
-            while (scr.hasNext()) {
-                output += scr.nextLine();
-            }
-            String[] courses=  output.split(":");
-            for(int i=0;i<courses.length;i++)
-            {
-                //  System.out.println(courses[i]);
-            }
-// I have no time to implement json parser so, if i have the file valuse i will pass it to the has courses function
-            switch (stID)
-            {
-                case 1:
-                    studentCourseList.add(1);
-                    studentCourseList.add(2);
-                    studentCourseList.add(3);
-                    studentCourseList.add(4);
-                    break;
-                case 2:
-                    studentCourseList.add(2);
-                    studentCourseList.add(4);
-                    studentCourseList.add(6);
-                    break;
-                case 3:
-                    studentCourseList.add(1);
-                    studentCourseList.add(3);
-                    studentCourseList.add(5);
-                    break;
-                default:
-                    System.out.println("this user has no courses");
-            }
-
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } finally {
-            scr.close();
+
         }
 
 
     }
 }
-
