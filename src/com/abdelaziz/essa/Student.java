@@ -229,7 +229,6 @@ public boolean isStudent()
         return  "The Entered number is not valid Course ID";
 
     }
-
     public void jsonReader(int stID) {
         String output = "";
 
@@ -243,92 +242,37 @@ public boolean isStudent()
             //jsonObject.get("");
             Iterator<String> keys = jsonObject.keySet().iterator();
 
-            while(keys.hasNext()) {
+            while (keys.hasNext()) {
                 String key = keys.next();
-                if (Integer.parseInt(key)==stID) {
+                if (Integer.parseInt(key) == stID) {
                     // do something with jsonObject here
-                    System.out.println("This student has courses: ");
-                    System.out.println(jsonObject.get(key));
+
+                    if (jsonObject.get(key) instanceof JSONArray) {
+                        JSONArray arr = (JSONArray) jsonObject.get(key);
+                        for (int i = 0; i < arr.size(); i++) {
+                            studentCourseList.add(Integer.parseInt(arr.get(i).toString()));
+
+                        }
+                    }
+                return;
                 }
 
             }
-
+            System.out.println("this Student has no courses");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
-
-        }
-
-
-    }
-
-    public void jsonReader_old(int stID) throws IOException, ParseException {
-        String output = "";
-
-        File sourceFile = new File(filePath + studenCoursDB);
-        //==================== //
-        JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader(sourceFile));
-        //  JSONArray jsonArray = new JSONArray(obj);
-      /*  for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            System.out.println(jsonObject.get("name"));
-            System.out.println(jsonObject.get("city"));
-            System.out.println(jsonObject.get("job"));
-            jsonObject.getJSONArray("cars").forEach(System.out::println);
-        }
-        */
-
-
-        //---------------------------//
-        Scanner scr = null;
-        try {
-            scr = new Scanner(sourceFile);
-            while (scr.hasNext()) {
-                output += scr.nextLine();
-            }
-            String[] courses=  output.split(":");
-            for(int i=0;i<courses.length;i++)
-            {
-                //  System.out.println(courses[i]);
-            }
-// I have no time to implement json parser so, if i have the file valuse i will pass it to the has courses function
-            switch (stID)
-            {
-                case 1:
-                    studentCourseList.add(1);
-                    studentCourseList.add(2);
-                    studentCourseList.add(3);
-                    studentCourseList.add(4);
-                    break;
-                case 2:
-                    studentCourseList.add(2);
-                    studentCourseList.add(4);
-                    studentCourseList.add(6);
-                    break;
-                case 3:
-                    studentCourseList.add(1);
-                    studentCourseList.add(3);
-                    studentCourseList.add(5);
-                    break;
-                default:
-                    System.out.println("this user has no courses");
-            }
-
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } finally {
-            scr.close();
+
         }
 
 
     }
+
+
 }
 

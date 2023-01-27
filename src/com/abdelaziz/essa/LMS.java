@@ -17,7 +17,7 @@ public class LMS extends FileOperations {
 
         Student st1= new Student(filesPath,"output.CSV","Student_course_details.json");
        //st1.setStID(101);
-       st1.printStudentData(3);
+       st1.printStudentData(-4);
        //st1.jsonReader();
     }
     public LMS() {
