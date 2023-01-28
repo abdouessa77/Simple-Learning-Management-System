@@ -18,6 +18,10 @@ public class Student extends FileOperations {
     private static String fieName;
     private static String studenCoursDB;
 
+    public Student() {
+
+    }
+
     public List<Integer> getStudentCourseList() {
         return studentCourseList;
     }
@@ -321,7 +325,7 @@ public class Student extends FileOperations {
                 String key = keys.next();
                 if (Integer.parseInt(key) == stID) {
                     // this student is exist
-
+                    studentCourseList.clear();
                     if (jsonObject.get(key) instanceof JSONArray) {
                         JSONArray arr = (JSONArray) jsonObject.get(key);
                         for (int i = 0; i < arr.size(); i++) {
@@ -348,7 +352,7 @@ public class Student extends FileOperations {
 
     }
 
-    public void addStudentCourse(int stID, int courseId)
+    public boolean addStudentCourse(int stID, int courseId)
     {
         if(isStudent(stID) && isStudentCourse(courseId)) {
             try {
@@ -372,17 +376,17 @@ public class Student extends FileOperations {
                         for (int i = 0; i < arr.size(); i++) {
                             if (Integer.parseInt(arr.get(i).toString())==courseId) {
                                 System.out.println("The student is already enrolment in this course");
-                                return;
+                                return false;
                             }
                             if(i>=5) {
                                 System.out.println("The student has maximum number of course");
-                                return;
+                                return false;
                             }
                         }
                             ((JSONArray) jsonObject.get(key)).add(arr.size(), courseId);
                             fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
                         }
-                        return;
+                        return true;
                     }
 
                 }
@@ -392,7 +396,7 @@ public class Student extends FileOperations {
                 ob.add(0,courseId);
                 jsonObject.put(stID,ob);
                 fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
-               // ;
+               return true;
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -405,12 +409,12 @@ public class Student extends FileOperations {
             }
         }
 
-
+return false;
 
     }
 
 
-    public void removeStudentCourse(int stID, int courseId)
+    public boolean removeStudentCourse(int stID, int courseId)
     {
         if(isStudent(stID) && isStudentCourse(courseId)) {
             try {
@@ -435,17 +439,17 @@ public class Student extends FileOperations {
                                                ((JSONArray) jsonObject.get(key)).remove(i);
                                                fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
                                                System.out.println("The course is removed from enrolment successfully");
-                                               return;
+                                               return true;
                                            } else {
                                                System.out.println("The course can not removed from enrolment where this student has only this course");
-                                               return;
+                                               return false;
                                            }
 
                                                 }
                                            }
                                         }
                         System.out.println("This student is not registered in this course");
-                        return;
+                        return false;
                     }
 
                 }
@@ -462,9 +466,10 @@ public class Student extends FileOperations {
             } finally {
 
             }
+
         }
 
-
+        return false;
 
     }
 
