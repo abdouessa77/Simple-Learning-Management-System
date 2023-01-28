@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="810a85df-9a14-4376-82e1-3ab8a4e1635d" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/com/abdelaziz/essa/Student.java">
+      <change afterPath="$PROJECT_DIR$/Screenshots/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Screenshots/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Screenshots/img_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Screenshots/img_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Screenshots/img_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Screenshots/img_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/LMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/LMS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/Student_course_details.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abdelaziz/essa/res/Student_course_details.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/abdou/Downloads/json-simple-1.1.1.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/abdou/Downloads/json-simple-1.1.1.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Workspaces\Training\Java\LMS\src\com\abdelaziz\essa" />
@@ -153,7 +161,21 @@
       <option name="project" value="LOCAL" />
       <updated>1674854543521</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/com/abdelaziz/essa/Student.java">
+      <created>1674855197458</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674855197458</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/com/abdelaziz/essa/Student.java">
+      <created>1674855205379</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674855205379</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

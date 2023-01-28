@@ -9,6 +9,9 @@ public class LMS extends FileOperations {
     public static void main(String[] st){
         LMS lm= new LMS();
 
+
+
+
         String str= lm.textFileReader(filesPath,"student-data.txt");
          lm.fileWriter(filesPath,"output.CSV",str);
     System.out.println(str);
@@ -17,8 +20,10 @@ public class LMS extends FileOperations {
 
         Student st1= new Student(filesPath,"output.CSV","Student_course_details.json");
        //st1.setStID(101);
-       st1.printStudentData(-4);
-       //st1.jsonReader();
+       st1.printStudentData(1);
+     //  st1.addStudentCourse(4,2);
+     //   st1.removeStudentCourse(4,2);
+        st1.switchStudentCourse(1,3,7);
     }
     public LMS() {
     }

@@ -154,8 +154,8 @@ public class Student extends FileOperations {
         jsonReader(stID);
         return true;
     }
-public boolean isStudent()
-{
+    public boolean isStudent()
+    {
   //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
     File sourceFile= new File(filePath+fieName);
     try {
@@ -190,7 +190,38 @@ public boolean isStudent()
     return false;
 
 }
+    public boolean isStudent(int stID)
+    {
+        //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
+        File sourceFile= new File(filePath+fieName);
+        try {
+            Scanner scr=new Scanner(sourceFile);
+            int i =0;
+            while (scr.hasNext()) {
 
+                String[] data = scr.nextLine().split("\n");
+                String[] row=data[0].split(",");
+
+                //  for (int k = 0; k < row.length; k++) {
+                if(i>0) // Scape header row
+                    if(Integer.parseInt(row[0])==stID)
+                    {
+
+                        return true;
+                    }
+
+                //}
+                i++;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+//stDb.split("\n")
+
+        System.out.println("The Entered number is not valid Student ID");
+        return false;
+
+    }
     public String studentCourse(int courseID)
     {
         //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
@@ -207,12 +238,6 @@ public boolean isStudent()
                 if(i>0) // Scape header row
                     if(Integer.parseInt(row[0])==courseID)
                     {
-                     /*   setCourseID(row[0]);
-                        setCourseName(row[1]);
-                        setCourseInstructor(row[2]+row[3]);
-                        setCourseDuration(row[4]);
-                        setCourseTime(row[5]);
-                        setCourseLocation(row[6]);*/
 
                         scr.close();
                         return row[0]+",      "+row[1]+",    "+row[2]+row[3]+",    "+row[4]+",     "+row[5]+",      "+row[6];
@@ -229,10 +254,41 @@ public boolean isStudent()
         return  "The Entered number is not valid Course ID";
 
     }
-    public void jsonReader(int stID) {
-        String output = "";
+    public boolean isStudentCourse(int courseID)
+    {
+        //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
+        File sourceFile= new File(filePath+"Courses.CSV");
+        try {
+            Scanner scr=new Scanner(sourceFile);
+            int i =0;
+            while (scr.hasNext()) {
 
-        Scanner scr = null;
+                String[] data = scr.nextLine().split("\n");
+                String[] row=data[0].split(",");
+
+                //  for (int k = 0; k < row.length; k++) {
+                if(i>0) // Scape header row
+                    if(Integer.parseInt(row[0])==courseID)
+                    {
+
+                        scr.close();
+                        return true;
+                    }
+
+                //}
+                i++;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+//stDb.split("\n")
+        System.out.println("The Entered number "+ courseID+" is not valid Course ID");
+        return  false;
+
+    }
+    public void jsonReader(int stID) {
+
+
         try {
             File sourceFile = new File(filePath + studenCoursDB);
             //==================== //
@@ -245,7 +301,7 @@ public boolean isStudent()
             while (keys.hasNext()) {
                 String key = keys.next();
                 if (Integer.parseInt(key) == stID) {
-                    // do something with jsonObject here
+                    // this student is exist
 
                     if (jsonObject.get(key) instanceof JSONArray) {
                         JSONArray arr = (JSONArray) jsonObject.get(key);
@@ -273,6 +329,182 @@ public boolean isStudent()
 
     }
 
+    public void addStudentCourse(int stID, int courseId)
+    {
+        if(isStudent(stID) && isStudentCourse(courseId)) {
+            try {
+                File sourceFile = new File(filePath + studenCoursDB);
+                //==================== //
+                JSONParser parser = new JSONParser();
+                Object obj = parser.parse(new FileReader(sourceFile));
+                JSONObject jsonObject = (JSONObject) obj;
+                //jsonObject.get("");
+                Iterator<String> keys = jsonObject.keySet().iterator();
 
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    if (Integer.parseInt(key) == stID) {
+                        // this student is exist
+
+                        if (jsonObject.get(key) instanceof JSONArray) {
+                            JSONArray arr = (JSONArray) jsonObject.get(key);
+
+
+                        for (int i = 0; i < arr.size(); i++) {
+                            if (Integer.parseInt(arr.get(i).toString())==courseId) {
+                                System.out.println("The student is already enrolment in this course");
+                                return;
+                            }
+                            if(i>=5) {
+                                System.out.println("The student has maximum number of course");
+                                return;
+                            }
+                        }
+                            ((JSONArray) jsonObject.get(key)).add(arr.size(), courseId);
+                            fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
+                        }
+                        return;
+                    }
+
+                }
+
+                System.out.println("this Student has no courses");
+                JSONArray ob= new JSONArray();
+                ob.add(0,courseId);
+                jsonObject.put(stID,ob);
+                fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
+               // ;
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+        }
+
+
+
+    }
+
+
+    public void removeStudentCourse(int stID, int courseId)
+    {
+        if(isStudent(stID) && isStudentCourse(courseId)) {
+            try {
+                File sourceFile = new File(filePath + studenCoursDB);
+                //==================== //
+                JSONParser parser = new JSONParser();
+                Object obj = parser.parse(new FileReader(sourceFile));
+                JSONObject jsonObject = (JSONObject) obj;
+                //jsonObject.get("");
+                Iterator<String> keys = jsonObject.keySet().iterator();
+
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    if (Integer.parseInt(key) == stID) {
+                        // this student is exist
+
+                        if (jsonObject.get(key) instanceof JSONArray) {
+                            JSONArray arr = (JSONArray) jsonObject.get(key);
+                            for (int i = 0; i < arr.size(); i++) {
+                                        if (Integer.parseInt(arr.get(i).toString())==courseId) {
+                                           if(i!=0) {
+                                               ((JSONArray) jsonObject.get(key)).remove(i);
+                                               fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
+                                               System.out.println("The course is removed from enrolment successfully");
+                                               return;
+                                           } else {
+                                               System.out.println("The course can not removed from enrolment where this student has only this course");
+                                               return;
+                                           }
+
+                                                }
+                                           }
+                                        }
+                        System.out.println("This student is not registered in this course");
+                        return;
+                    }
+
+                }
+
+                System.out.println("this Student has no courses");
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+        }
+
+
+
+    }
+
+    public void switchStudentCourse(int stID, int course1Id, int course2Id )
+    {
+        if(isStudent(stID) && isStudentCourse(course1Id)) {
+            try {
+                File sourceFile = new File(filePath + studenCoursDB);
+                //==================== //
+                JSONParser parser = new JSONParser();
+                Object obj = parser.parse(new FileReader(sourceFile));
+                JSONObject jsonObject = (JSONObject) obj;
+                //jsonObject.get("");
+                Iterator<String> keys = jsonObject.keySet().iterator();
+
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    if (Integer.parseInt(key) == stID) {
+                        // this student is exist
+
+                        if (jsonObject.get(key) instanceof JSONArray) {
+                            JSONArray arr = (JSONArray) jsonObject.get(key);
+                            for (int i = 0; i < arr.size(); i++) {
+                                if (Integer.parseInt(arr.get(i).toString())==course1Id) {
+                                    if(i!=0) {
+                                        ((JSONArray) jsonObject.get(key)).remove(i);
+                                        fileWriter(filePath, studenCoursDB, jsonObject.toJSONString());
+                                        addStudentCourse(stID,course2Id);
+                                        System.out.println("The course "+course1Id+" and "+course2Id+" are Switched successfully");
+                                        return;
+                                    } else {
+                                        System.out.println("The course can not removed from enrolment where this student has only this course");
+                                        return;
+                                    }
+
+                                }
+                            }
+                        }
+                        System.out.println("This student is not registered in this course");
+                        return;
+                    }
+
+                }
+
+                System.out.println("this Student has no courses");
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+        }
+
+
+    }
 }
 
