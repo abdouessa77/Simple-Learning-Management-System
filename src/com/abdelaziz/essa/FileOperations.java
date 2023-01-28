@@ -74,7 +74,7 @@ public String textFileReader(String filePath, String fileName)
 public void xmlReder(String filePath, String fileName)
 {
     try {
-preparerXml(filePath, fileName);
+    preparerXml(filePath, fileName);
         File root = new File(filePath+fileName);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -101,7 +101,7 @@ preparerXml(filePath, fileName);
             finalData=finalData+"\n";
         }
         outPut=headerData.replace("_"," ") +"\n"+finalData;
-        System.out.println(outPut);
+       // System.out.println(outPut);
         fileWriter(filePath,"Courses.CSV", outPut);
     } catch (Exception ex) {
         ex.printStackTrace();

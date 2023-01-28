@@ -254,6 +254,25 @@ public class Student extends FileOperations {
         return  "The Entered number is not valid Course ID";
 
     }
+    public void printCoursesList()
+    {
+        //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
+        File sourceFile= new File(filePath+"Courses.CSV");
+        try {
+            Scanner scr=new Scanner(sourceFile);
+            int i =0;
+            while (scr.hasNext()) {
+
+                String[] data = scr.nextLine().split("\n");
+                System.out.println(data[0]);
+                //}
+                i++;
+            }
+            scr.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public boolean isStudentCourse(int courseID)
     {
         //  String[] stDb=this.textFileReader(filePath,fieName).split("\n");
